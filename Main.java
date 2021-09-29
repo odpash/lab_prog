@@ -1,6 +1,7 @@
 package com.company;
 
 import java.lang.Math.*;
+import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
@@ -31,18 +32,14 @@ public class Main {
             }
         }
         System.out.println("Output:");
-        System.out.println("Col/Row |   Col 1   |   Col 2   |   Col 3   |   Col 4   |   Col 5   |   Col 6   |   Col 7   |   Col 8   |   Col 9   |   Col 10  |   Col 11  |");
+        System.out.println("Col/Row |   Col 1  |   Col 2  |   Col 3  |   Col 4  |   Col 5  |   Col 6  |   Col 7  |   Col 8  |   Col 9  |  Col 10  |  Col 11  |");
         for (int i = 0; i < 10; i++) {
             String to_print = "";
             if (i > 8) {to_print = " Row " + (i + 1) + " |";}
             else {to_print = " Row " + (i + 1) + "  |";}
             for (int j = 0; j < 11; j++) {
-                if (String.format("%.5f", sp[i][j]).length() == 7) {to_print += "  " + String.format("%.5f", sp[i][j]) + "  |";};
-                if (String.format("%.5f", sp[i][j]).length() == 8) {to_print += "  " + String.format("%.5f", sp[i][j]) + " |";};
-                if (String.format("%.5f", sp[i][j]).length() == 9) {to_print += " " + String.format("%.5f", sp[i][j]) + " |";};
-                if (String.format("%.5f", sp[i][j]).length() == 10) {to_print += "" + String.format("%.5f", sp[i][j]) + " |";};
-                if (String.format("%.5f", sp[i][j]).length() == 11) {to_print += "" + String.format("%.5f", sp[i][j]) + "|";};
-
+                String result_digit = String.format("%.5f", sp[i][j]);
+                to_print += String.join("", Collections.nCopies(10 - result_digit.length(), " ")) + result_digit + "|";
                 }
             System.out.println(to_print);
         }
